@@ -13,8 +13,6 @@ public class RegistrationFormPage {
   private CalendarComponent calendarComponent = new CalendarComponent();
   private ResultModal resultModal = new ResultModal();
 
-
-  //Elements
   private SelenideElement
           firstNameInput = $("#firstName"),
           lastNameInput = $("#lastName"),
@@ -31,7 +29,6 @@ public class RegistrationFormPage {
 
   private final static String TITLE_TEXT = "Student Registration Form";
 
-  //Actions
   public RegistrationFormPage openPage() {
     open("/automation-practice-form");
     $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
@@ -133,6 +130,5 @@ public class RegistrationFormPage {
 
     return this;
   }
-
 
 }
