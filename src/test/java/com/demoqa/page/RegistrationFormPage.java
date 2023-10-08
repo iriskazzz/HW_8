@@ -27,11 +27,18 @@ public class RegistrationFormPage {
           cityInput = $("#stateCity-wrapper"),
           submitButton = $("#submit");
 
-  private final static String TITLE_TEXT = "Student Registration Form";
-
   public RegistrationFormPage openPage() {
     open("/automation-practice-form");
-    $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
+
+    return this;
+  }
+  public RegistrationFormPage checkTitle(String title) {
+    $(".practice-form-wrapper").shouldHave(text(title));
+
+    return this;
+  }
+
+  public RegistrationFormPage removeBanner() {
     executeJavaScript("$('footer').remove()");
     executeJavaScript("$('#fixedban').remove()");
 
