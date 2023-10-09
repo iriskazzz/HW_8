@@ -21,6 +21,7 @@ public class RegistrationFormWithTestDataTests {
 
   @Test
   void fillPracticeForm() {
+    System.out.println(testData);
     registrationFormPage
             .openPage()
             .checkTitle(TITLE_TEXT)
@@ -55,6 +56,7 @@ public class RegistrationFormWithTestDataTests {
 
   @Test
   void fillPracticeWithMinimumDataForm() {
+    System.out.println(testData);
     registrationFormPage
             .openPage()
             .removeBanner()

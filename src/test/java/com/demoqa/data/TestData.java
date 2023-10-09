@@ -4,7 +4,6 @@ import com.github.javafaker.Faker;
 
 import java.util.*;
 
-import static com.demoqa.utils.RandomUtils.getRandomPhone;
 import static com.demoqa.utils.RandomUtils.getRandomString;
 import static java.lang.String.format;
 
@@ -28,7 +27,7 @@ public class TestData {
           fullName = format("%s %s", firstName, lastName),
           email = getRandomString(6) + "@quru.qa",
           gender = faker.options().option(genderList),
-          number = getRandomPhone(),
+          number = faker.phoneNumber().subscriberNumber(10),
           day = String.valueOf(faker.number().numberBetween(10, 30)),
           month = faker.options().option(monthList),
           year = String.valueOf(faker.number().numberBetween(1901, 2020)),
