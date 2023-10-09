@@ -32,6 +32,7 @@ public class RegistrationFormPage {
 
     return this;
   }
+
   public RegistrationFormPage checkTitle(String title) {
     $(".practice-form-wrapper").shouldHave(text(title));
 

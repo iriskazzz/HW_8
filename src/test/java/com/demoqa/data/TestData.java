@@ -15,28 +15,44 @@ import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 public class TestData {
   public static Faker faker = new Faker(new Locale("ru"));
-  public static List<String> genders = List.of("Male", "Female", "Other");
-  public static List<String> years = List.of("1990", "1995", "2000");
-  public static List<String> months = Stream.of(getInstance().getDisplayNames(MONTH, LONG, ENGLISH).keySet().toArray())
-          .map(e -> ((String) e)).toList();
-  public static List<String> subjects = List.of("Maths", "Accounting", "English");
-  public static List<String> hobbies = List.of("Sports", "Reading", "Music");
-  public static String firstName = faker.name().firstName(),
+  private final String[]
+          genderList = {"Male", "Female", "Other"},
+          monthList = {"January", "February", "March", "April", "May", "June",
+                  "July", "August", "September", "October", "November", "December"},
+          subjectList = {"Accounting", "Arts", "Biology", "Chemistry", "Civics", "Commerce", "Computer Science",
+                  "Economics", "English", "Hindi", "History", "Maths", "Physics", "Social Studies"},
+          hobbiesList = {"Sports", "Reading", "Music"},
+          stateList = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"},
+          ncrCities = {"Delhi", "Gurgaon", "Noida"},
+          uttarCities = {"Agra", "Lucknow", "Merrut"},
+          haryanaCities = {"Karnal", "Panipat"},
+          rajasthanCities = {"Jaipur", "Jaiselmer"};
+  public String
+          firstName = faker.name().firstName(),
           lastName = faker.name().lastName(),
           fullName = format("%s %s", firstName, lastName),
           email = getRandomString(6) + "@quru.qa",
-          gender = genders.get(nextInt(0, genders.size())),
+          gender = faker.options().option(genderList),
           number = getRandomPhone(),
-          day = faker.number().numberBetween(10, 30) + "",
-          month = months.get(nextInt(0, 12)),
-          year = years.get(nextInt(0, years.size())),
+          day = String.valueOf(faker.number().numberBetween(10, 30)),
+          month = faker.options().option(monthList),
+          year = String.valueOf(faker.number().numberBetween(1901, 2020)),
           expectedDateOfBirth = format("%s %s,%s", day, month, year),
-          subject = subjects.get(nextInt(0, subjects.size())),
+          subject = faker.options().option(subjectList),
           currentAddress = faker.address().fullAddress(),
-          hobby = hobbies.get(nextInt(0, hobbies.size())),
+          hobby = faker.options().option(hobbiesList),
           picture = "test.png",
-          state = "Haryana",
-          city = "Karnal",
+          state = faker.options().option(stateList),
+          city = getCity(state),
           stateAndCity = format("%s %s", state, city);
 
+  private String getCity(String ofState) {
+    return switch (ofState) {
+      case "NCR" -> faker.options().option(ncrCities);
+      case "Uttar Pradesh" -> faker.options().option(uttarCities);
+      case "Haryana" -> faker.options().option(haryanaCities);
+      case "Rajasthan" -> faker.options().option(rajasthanCities);
+      default -> "";
+    };
+  }
 }
