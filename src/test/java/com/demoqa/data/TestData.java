@@ -3,15 +3,10 @@ package com.demoqa.data;
 import com.github.javafaker.Faker;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 import static com.demoqa.utils.RandomUtils.getRandomPhone;
 import static com.demoqa.utils.RandomUtils.getRandomString;
 import static java.lang.String.format;
-import static java.util.Calendar.*;
-import static java.util.Calendar.MONTH;
-import static java.util.Locale.*;
-import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 public class TestData {
   public static Faker faker = new Faker(new Locale("ru"));
