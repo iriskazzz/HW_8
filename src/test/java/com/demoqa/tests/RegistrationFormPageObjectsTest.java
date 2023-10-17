@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.demoqa.page.RegistrationFormPage;
 import org.junit.jupiter.api.*;
 
+@Tag("simple")
 public class RegistrationFormPageObjectsTest {
   RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
