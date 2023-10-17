@@ -4,12 +4,15 @@ import com.codeborne.selenide.Configuration;
 import com.demoqa.data.TestData;
 import com.demoqa.page.RegistrationFormPage;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+@Tag("simple")
 public class RegistrationFormWithTestDataTests {
 
   RegistrationFormPage registrationFormPage = new RegistrationFormPage();
   TestData testData = new TestData();
+
 
   private final static String TITLE_TEXT = "Student Registration Form";
 
